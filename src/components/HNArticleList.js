@@ -1,10 +1,9 @@
 /* @flow */
 import React from 'react'
-import { ScrollView, View } from 'react-native'
-import { Card, ListItem, Button, Text } from 'react-native-elements'
-import { compose, lifecycle } from 'recompose'
 import { connect } from 'react-redux'
-import type { ScreenProps } from '../types'
+import { compose, lifecycle } from 'recompose'
+import { ScrollView, View } from 'react-native'
+import { Card, ListItem, Text } from 'react-native-elements'
 import { updateStories } from '../actions/storiesAction'
 
 export default compose(
@@ -14,7 +13,7 @@ export default compose(
       this.props.dispatch(updateStories())
     }
   })
-)(function HNArticleList(props) {
+)(function HNArticleList(props: any) {
   return (
     <ScrollView>
       {props.stories && props.stories.length
@@ -30,9 +29,7 @@ export default compose(
             )}
           </Card>
         : <View>
-            <Text>
-              …
-            </Text>
+            <Text>…</Text>
           </View>}
     </ScrollView>
   )

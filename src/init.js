@@ -1,6 +1,6 @@
 /* @flow */
-import config from './config'
 import { Segment } from 'expo'
+import config from './config'
 
 if (config.segmentIOSWriteKey) {
   Segment.initializeIOS(config.segmentIOSWriteKey)

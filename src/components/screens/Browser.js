@@ -1,6 +1,6 @@
 /* @flow */
 import React from 'react'
-import { WebView, ScrollView } from 'react-native'
+import { WebView } from 'react-native'
 import type { ScreenProps } from '../../types'
 
 export default function Browser({ navigation }: ScreenProps) {
