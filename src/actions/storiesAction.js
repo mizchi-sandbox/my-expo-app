@@ -6,12 +6,13 @@ import type { Story } from '../types'
 
 export type StoriesAction = {
   type: typeof UPDATE_STORIES,
-  payload: Promise<Story[]>
+  payload: Story[]
 }
 
-export function updateStories(): StoriesAction {
+export async function updateStories(): Promise<StoriesAction> {
+  const payload = await fetchStories()
   return {
     type: UPDATE_STORIES,
-    payload: fetchStories()
+    payload
   }
 }

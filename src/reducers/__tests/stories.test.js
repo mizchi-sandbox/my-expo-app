@@ -9,8 +9,12 @@ const DUMMY_STORY = {
   url: 'dummy'
 }
 
+const NOP: any = {
+  type: 'nop'
+}
+
 test('fetch HN stories', async t => {
-  const initialState = stories(undefined, { type: 'nop' })
+  const initialState = stories(undefined, NOP)
   t.deepEqual(initialState.stories, [])
   const nextState = stories(initialState, {
     type: UPDATE_STORIES,
