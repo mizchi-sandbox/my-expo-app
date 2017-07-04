@@ -1,6 +1,6 @@
 /* @flow */
 import { StackNavigator } from 'react-navigation'
-import Settings from '../components/screens/Settings'
+import Settings from '../screens/Settings'
 
 export default StackNavigator({
   Settings: {
