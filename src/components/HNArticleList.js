@@ -1,39 +1,23 @@
 /* @flow */
 import React from 'react'
-import { WebBrowser } from 'expo'
 import { ScrollView, View } from 'react-native'
 import { Card, ListItem, Button, Text } from 'react-native-elements'
 import { compose, lifecycle } from 'recompose'
+import { connect } from 'react-redux'
 import type { ScreenProps } from '../types'
+import { updateStories } from '../actions/storiesAction'
 
 export default compose(
+  connect(r => r.stories),
   lifecycle({
     async componentDidMount() {
-      const res = await fetch(
-        'https://hacker-news.firebaseio.com/v0/topstories.json'
-      )
-      const storyIds = await res.json()
-      const storyIdsTop10 = storyIds.slice(0, 10)
-
-      const stories = await Promise.all(
-        storyIdsTop10.map(async sid => {
-          try {
-            const res = await fetch(
-              `https://hacker-news.firebaseio.com/v0/item/${sid}.json`
-            )
-            return res.json()
-          } catch (e) {
-            console.log('fetch failed', e)
-          }
-        })
-      )
-      this.setState({ stories })
+      this.props.dispatch(updateStories())
     }
   })
 )(function HNArticleList(props) {
   return (
     <ScrollView>
-      {props.stories
+      {props.stories && props.stories.length
         ? <Card containerStyle={{ padding: 0 }}>
             {props.stories.map(s =>
               <ListItem

@@ -1,11 +1,13 @@
 /* @flow */
 import React from 'react'
+import { Provider } from 'react-redux'
 import { TabNavigator } from 'react-navigation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MainStack from './MainStack'
 import SettingsStack from './SettingsStack'
+import createStore from '../../store/create'
 
-export default TabNavigator(
+export const Main = TabNavigator(
   {
     Main: {
       screen: MainStack,
@@ -40,3 +42,5 @@ export default TabNavigator(
     swipeEnabled: false
   }
 )
+
+export default () => <Provider store={createStore()}><Main /></Provider>

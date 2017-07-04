@@ -1,4 +1,9 @@
 /* @flow */
+export type Story = {
+  id: any,
+  url: string,
+  title: string
+}
 export type ScreenProps = {
   navigation: {
     state: {
