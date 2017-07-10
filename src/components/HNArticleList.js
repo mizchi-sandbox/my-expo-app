@@ -9,7 +9,7 @@ import { updateStories } from '../actions/storiesAction'
 export default compose(
   connect(r => r.stories),
   lifecycle({
-    async componentDidMount() {
+    componentDidMount() {
       this.props.dispatch(updateStories())
     }
   })
