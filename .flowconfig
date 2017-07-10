@@ -4,6 +4,7 @@
 .*/node_modules/react-native-tab-view/.*
 .*/node_modules/react-native-fbads/.*
 .*/node_modules/react-navigation/.*
+.*/node_modules/styled-components/.*
 
 [include]
 
