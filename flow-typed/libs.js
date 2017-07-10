@@ -7,4 +7,5 @@ declare module 'react-native' {
 }
 declare module 'expo' {
   declare module.exports: any
+  declare var expo: any
 }
