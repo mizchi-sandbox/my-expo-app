@@ -4,20 +4,34 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { TabNavigator, addNavigationHelpers } from 'react-navigation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import MainStack from './MainStack'
+import Home from '../screens/Home'
+import NewsStack from './NewsStack'
 import SettingsStack from './SettingsStack'
 
-// export default TabNavigator(
 export const MainTab = TabNavigator(
   {
-    Main: {
-      screen: MainStack,
-      path: '/',
+    Home: {
+      screen: Home,
+      path: '/home',
       navigationOptions: {
+        title: 'AAA',
         tabBarLabel: 'Home',
         tabBarIcon: ({ tintColor, focused }: any) =>
           <Ionicons
             name={focused ? 'ios-home' : 'ios-home-outline'}
+            size={26}
+            style={{ color: tintColor }}
+          />
+      }
+    },
+    News: {
+      screen: NewsStack,
+      path: '/news',
+      navigationOptions: {
+        tabBarLabel: 'News',
+        tabBarIcon: ({ tintColor }: any) =>
+          <Ionicons
+            name="logo-hackernews"
             size={26}
             style={{ color: tintColor }}
           />
@@ -45,7 +59,7 @@ export const MainTab = TabNavigator(
 )
 
 export default connect(state => ({
-  nav: state.mainTab
+  nav: state.nav.mainTab
 }))(function MainTabWithNavigation(props: any) {
   return (
     <MainTab

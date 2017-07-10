@@ -2,20 +2,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { StackNavigator, addNavigationHelpers } from 'react-navigation'
-import Home from '../screens/Home'
+import News from '../screens/News'
 import Browser from '../screens/Browser'
 
-export const MainStack = StackNavigator({
-  Home: {
-    screen: Home,
-    path: '/',
+export const NewsStack = StackNavigator({
+  Top: {
+    screen: News,
+    path: '/news/top',
     navigationOptions: {
-      title: 'HN Articles'
+      title: 'HN:News'
     }
   },
   Browser: {
     screen: Browser,
-    path: '/browser/:url',
+    path: '/news/browser/:url',
     navigationOptions: ({ navigation }) => ({
       title: `${navigation.state.params.url}`
     })
@@ -23,10 +23,10 @@ export const MainStack = StackNavigator({
 })
 
 export default connect(state => ({
-  nav: state.mainStack
-}))(function MainStackWithNavigation(props: any) {
+  nav: state.nav.newsStack
+}))(function NewsStackWithNavigation(props: any) {
   return (
-    <MainStack
+    <NewsStack
       navigation={addNavigationHelpers({
         dispatch: props.dispatch,
         state: props.nav

@@ -1,8 +1,17 @@
 /* @flow */
 import React from 'react'
+import { ScrollView, Platform } from 'react-native'
+import { Text } from 'react-native-elements'
 import type { ScreenProps } from '../../types'
-import HNArticleList from '../HNArticleList'
 
 export default function Home({ navigation }: ScreenProps) {
-  return <HNArticleList navigation={navigation} />
+  return (
+    <ScrollView
+      style={{
+        marginTop: Platform.OS === 'ios' ? 20 : 0
+      }}
+    >
+      <Text h1>Home</Text>
+    </ScrollView>
+  )
 }

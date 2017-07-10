@@ -5,7 +5,7 @@ import Settings from '../screens/Settings'
 export default StackNavigator({
   Settings: {
     screen: Settings,
-    path: '/',
+    path: '/settings/top',
     navigationOptions: () => ({
       title: 'Settings'
     })
