@@ -1,12 +1,14 @@
 /* @flow */
 /* eslint-disable react/display-name*/
 import React from 'react'
-import { TabNavigator } from 'react-navigation'
+import { connect } from 'react-redux'
+import { TabNavigator, addNavigationHelpers } from 'react-navigation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MainStack from './MainStack'
 import SettingsStack from './SettingsStack'
 
-export default TabNavigator(
+// export default TabNavigator(
+export const MainTab = TabNavigator(
   {
     Main: {
       screen: MainStack,
@@ -41,3 +43,16 @@ export default TabNavigator(
     swipeEnabled: false
   }
 )
+
+export default connect(state => ({
+  nav: state.mainTab
+}))(function MainTabWithNavigation(props: any) {
+  return (
+    <MainTab
+      navigation={addNavigationHelpers({
+        dispatch: props.dispatch,
+        state: props.nav
+      })}
+    />
+  )
+})

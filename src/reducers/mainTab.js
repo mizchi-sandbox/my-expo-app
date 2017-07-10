@@ -1,9 +1,12 @@
 /* @flow */
-import MainTab from '../components/navigators/MainTab'
+import { MainTab } from '../components/navigators/MainTab'
 
-const initialState = MainTab.router.getStateForAction(
-  MainTab.router.getActionForPathAndParams('/')
-)
+// Push initial
+// const initialState = MainTab.router.getStateForAction(
+//   MainTab.router.getActionForPathAndParams('/')
+// )
+
+const initialState = null
 
 export default (state: any = initialState, action: any) => {
   const nextState = MainTab.router.getStateForAction(action, state)
