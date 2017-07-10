@@ -2,9 +2,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { compose, lifecycle } from 'recompose'
+import styled from 'styled-components/native'
 import { ScrollView, ActivityIndicator, StyleSheet } from 'react-native'
 import { Card, ListItem, Text } from 'react-native-elements'
 import { updateStories } from '../actions/storiesAction'
+
+const StyledLoader = styled.View`
+  alignItems: center;
+  justifyContent: center;
+  padding: 8px;
+`
 
 export default compose(
   connect(r => r.stories),
@@ -17,7 +24,9 @@ export default compose(
   const loaded = props.stories && props.stories.length
   if (!loaded) {
     return (
-      <ActivityIndicator animating={true} style={styles.loader} size="large" />
+      <StyledLoader>
+        <ActivityIndicator animating={true} size="large" />
+      </StyledLoader>
     )
   } else {
     return (
@@ -35,13 +44,5 @@ export default compose(
         </Card>
       </ScrollView>
     )
-  }
-})
-
-const styles = StyleSheet.create({
-  loader: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 8
   }
 })
