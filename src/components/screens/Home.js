@@ -2,7 +2,6 @@
 import React from 'react'
 import { ScrollView, Platform } from 'react-native'
 import { Svg } from 'expo'
-import { Text } from 'react-native-elements'
 import range from 'lodash.range'
 import type { ScreenProps } from '../../types'
 
@@ -29,8 +28,8 @@ const stepMap = (prev: GameOfLife): GameOfLife => {
     const cy = ~~(index / prev.sizeX)
 
     let activeCounter = 0
-    range(-1, 1).forEach(dx => {
-      range(-1, 1).forEach(dy => {
+    range(-1, 2).forEach(dx => {
+      range(-1, 2).forEach(dy => {
         if (!(dx === 0 && dy === 0) && isActiveCell(prev, cx + dx, cy + dy)) {
           activeCounter += 1
         }
@@ -84,7 +83,6 @@ class GameOfLifeDisplay extends React.Component {
               height={CELL_SIZE}
               fill={cell ? 'black' : 'transparent'}
               onPress={() => {
-                console.log('onPress svg')
                 this.setState({ gol: createMap(20, 20) })
               }}
             />
