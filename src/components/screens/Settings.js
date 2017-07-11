@@ -1,7 +1,14 @@
 /* @flow */
 import React from 'react'
 import { connect } from 'react-redux'
-import { ScrollView, Slider, Switch, TextInput } from 'react-native'
+import {
+  ScrollView,
+  Slider,
+  Switch,
+  TextInput,
+  Alert,
+  Platform
+} from 'react-native'
 import { Text, Button, Divider } from 'react-native-elements'
 import { compose, lifecycle } from 'recompose'
 import * as settingsAction from '../../actions/settingsAction'
@@ -53,7 +60,31 @@ export default compose(
         onChangeText={text => dispatch(settingsAction.setInputValue(text))}
       />
 
-      <Button title="Reset" onPress={() => dispatch(settingsAction.reset())} />
+      <Button
+        title="Reset"
+        onPress={() => {
+          // Works on both iOS and Android
+          Alert.alert(
+            'CAUTION!',
+            'You are going to reset settings.',
+            [
+              {
+                text: 'Cancel',
+                style: 'cancel',
+                onPress: () => console.log('Cancel Pressed')
+              },
+              {
+                text: 'OK',
+                style: Platform.OS === 'ios' ? 'destructive' : 'negative',
+                onPress: () => {
+                  dispatch(settingsAction.reset())
+                }
+              }
+            ],
+            { cancelable: false }
+          )
+        }}
+      />
     </ScrollView>
   )
 })
