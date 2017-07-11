@@ -10,7 +10,7 @@ export const NewsStack = StackNavigator({
     screen: News,
     path: '/news/top',
     navigationOptions: {
-      title: 'HN:News'
+      title: 'Hacker News'
     }
   },
   Browser: {

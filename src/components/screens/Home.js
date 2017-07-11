@@ -1,6 +1,7 @@
 /* @flow */
 import React from 'react'
-import { ScrollView, Platform } from 'react-native'
+import { Platform, View } from 'react-native'
+import { Text } from 'react-native-elements'
 import { Svg } from 'expo'
 import range from 'lodash.range'
 import type { ScreenProps } from '../../types'
@@ -82,9 +83,6 @@ class GameOfLifeDisplay extends React.Component {
               width={CELL_SIZE}
               height={CELL_SIZE}
               fill={cell ? 'black' : 'transparent'}
-              onPress={() => {
-                this.setState({ gol: createMap(20, 20) })
-              }}
             />
           )
         })}
@@ -95,12 +93,15 @@ class GameOfLifeDisplay extends React.Component {
 
 export default function Home(_props: ScreenProps) {
   return (
-    <ScrollView
+    <View
       style={{
-        marginTop: Platform.OS === 'ios' ? 20 : 0
+        marginTop: Platform.OS === 'ios' ? 20 : 0,
+        justifyContent: 'center',
+        alignItems: 'center'
       }}
     >
+      <Text h2>Welcome Expo App</Text>
       <GameOfLifeDisplay />
-    </ScrollView>
+    </View>
   )
 }
